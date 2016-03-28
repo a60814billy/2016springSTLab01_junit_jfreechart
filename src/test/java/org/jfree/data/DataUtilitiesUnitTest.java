@@ -5,6 +5,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
+import static org.junit.Assert.assertArrayEquals;
 import static org.junit.Assert.assertEquals;
 
 public class DataUtilitiesUnitTest {
@@ -178,6 +179,51 @@ public class DataUtilitiesUnitTest {
     @Test(expected = IllegalArgumentException.class)
     public void testDataIsNullGetCumulativePercentages() {
         KeyedValues result = DataUtilities.getCumulativePercentages(null);
+    }
+    //endregion
+
+    //region test public static java.lang.Number[] createNumberArray(double[] data)
+    @Test
+    public void testCreateNumberArray() {
+        Number[] result = DataUtilities.createNumberArray(new double[]{1.1, 2.2, 3.3});
+        Number[] expected = {1.1, 2.2, 3.3};
+        assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void testDataIsEmptyCreateNumberArray() {
+        Number[] result = DataUtilities.createNumberArray(new double[]{});
+        Number[] expected = {};
+        assertArrayEquals(expected, result);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDataIsNullCreateNumberArray() {
+        DataUtilities.createNumberArray(null);
+    }
+    //endregion
+
+    //region test public static java.lang.Number[] createNumberArray2D(double[] data)
+    @Test
+    public void testCreateNumberArray2D() {
+        double[][] data = {{1.1, 2.2, 3.3}, {1.1, 2.2, 3.3}, {1.1, 2.2, 3.3}, {1.1, 2.2, 3.3}};
+        Number[][] result = DataUtilities.createNumberArray2D(data);
+        Number[][] expected = {{1.1, 2.2, 3.3}, {1.1, 2.2, 3.3}, {1.1, 2.2, 3.3}, {1.1, 2.2, 3.3}};
+        assertEquals(4, result.length);
+        assertEquals(3, result[0].length);
+        assertArrayEquals(expected, result);
+    }
+
+    @Test
+    public void testDataIsEmptyCreateNumberArray2D() {
+        Number[][] result = DataUtilities.createNumberArray2D(new double[][]{});
+        Number[] expected = {};
+        assertArrayEquals(expected, result);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDataIsNullCreateNumberArray2D() {
+        DataUtilities.createNumberArray2D(null);
     }
     //endregion
 
