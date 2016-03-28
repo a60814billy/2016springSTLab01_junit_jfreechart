@@ -66,10 +66,17 @@ public class DataUtilitiesUnitTest {
         assertEquals(0.0, result, delta);
     }
 
-    @Ignore
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testValidRowIsNullRowsCalculateColumnTotal() {
-        double result = DataUtilities.calculateColumnTotal(this.testVal, 0, null);
+        boolean pass = false;
+        try {
+            DataUtilities.calculateColumnTotal(this.testVal, 0, null);
+            fail();
+        } catch (NullPointerException e) {
+            pass = true;
+        }
+        assertTrue(pass);
+
     }
 
     @Test(expected = IllegalArgumentException.class)
@@ -129,10 +136,16 @@ public class DataUtilitiesUnitTest {
         DataUtilities.calculateRowTotal(this.testVal, 1, new int[]{});
     }
 
-    @Ignore
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void testValidColIsNullValidCalculateRowTotal() {
-        DataUtilities.calculateRowTotal(this.testVal, 1, null);
+        boolean pass = false;
+        try {
+            DataUtilities.calculateRowTotal(this.testVal, 1, null);
+            fail();
+        } catch (NullPointerException e) {
+            pass = true;
+        }
+        assertTrue(pass);
     }
     //endregion
 
