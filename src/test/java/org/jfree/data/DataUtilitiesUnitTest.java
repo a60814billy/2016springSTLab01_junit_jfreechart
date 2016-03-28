@@ -46,6 +46,37 @@ public class DataUtilitiesUnitTest {
     }
     //endregion
 
+    //region test public static double calculateColumnTotal(Values2D data,int column, int[] validRows)
+    @Test
+    public void testValidRow0_2RowsCalculateColumnTotal() {
+        double result = DataUtilities.calculateColumnTotal(this.testVal, 0, new int[]{0, 2});
+        assertEquals(4.0, result, delta);
+    }
+
+    @Test
+    public void testValidRow0RowsCalculateColumnTotal() {
+        double result = DataUtilities.calculateColumnTotal(this.testVal, 0, new int[]{0});
+        assertEquals(1.0, result, delta);
+    }
+
+    @Test
+    public void testValidRowIsEmptyRowsCalculateColumnTotal() {
+        double result = DataUtilities.calculateColumnTotal(this.testVal, 0, new int[]{});
+        assertEquals(0.0, result, delta);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testValidRowIsNullRowsCalculateColumnTotal() {
+        double result = DataUtilities.calculateColumnTotal(this.testVal, 0, null);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDataIsNullValidRowsCalculateColumnTotal() {
+        double result = DataUtilities.calculateColumnTotal(null, 0, new int[]{});
+        assertEquals(0.0, result, delta);
+    }
+    //endregion
+
     //region test public static double calculateRowTotal(Values2D data,int row)
     @Test
     public void testRow0CalculateRowTotal() {
