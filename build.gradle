@@ -17,6 +17,14 @@ dependencies {
     compile name: 'jfreechart-1.0.19'
 }
 
-test{
+test {
     include 'org/jfree/data/JFreeChartDataTestSuite.class'
+    afterTest { desc, result ->
+        println "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
+    }
+    afterSuite { desc, result ->
+        if (!desc.parent) {
+            println "Results: ${result.resultType} (${result.testCount} tests, ${result.successfulTestCount} successes, ${result.failedTestCount} failures, ${result.skippedTestCount} skipped)"
+        }
+    }
 }
