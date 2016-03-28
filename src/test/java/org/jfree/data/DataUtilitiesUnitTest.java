@@ -9,14 +9,15 @@ import static org.junit.Assert.assertEquals;
 public class DataUtilitiesUnitTest {
 
     private FakeValues2D testVal;
+    private final double delta = 0.0001;
 
     @Before
-    public void setUp(){
+    public void setUp() {
         this.testVal = new FakeValues2D();
     }
 
     @After
-    public void tearDown(){
+    public void tearDown() {
         this.testVal = null;
     }
 
@@ -24,13 +25,13 @@ public class DataUtilitiesUnitTest {
     @Test
     public void testColumn0CalculateColumnTotal() {
         double result = DataUtilities.calculateColumnTotal(this.testVal, 0);
-        assertEquals(6.0, result, 0.0001);
+        assertEquals(6.0, result, delta);
     }
 
     @Test
     public void testColumn2CalculateColumnTotal() {
         double result = DataUtilities.calculateColumnTotal(this.testVal, 2);
-        assertEquals(24.0, result, 0.0001);
+        assertEquals(24.0, result, delta);
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
@@ -49,13 +50,13 @@ public class DataUtilitiesUnitTest {
     @Test
     public void testRow0CalculateRowTotal() {
         double result = DataUtilities.calculateRowTotal(this.testVal, 0);
-        assertEquals(12.0, result, 0.0001);
+        assertEquals(12.0, result, delta);
     }
 
     @Test
     public void testRow2CalculateRowTotal() {
         double result = DataUtilities.calculateRowTotal(this.testVal, 2);
-        assertEquals(18.0, result, 0.0001);
+        assertEquals(18.0, result, delta);
     }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
