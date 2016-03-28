@@ -232,6 +232,10 @@ public class DataUtilitiesUnitTest {
         double[][] data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         assertArrayEquals(data, data);
         double[][] result = DataUtilities.clone(data);
+        assertEquals(data.length, result.length);
+        for (int i = 0; i < data.length; i++) {
+            assertEquals(data[i].length, result[i].length);
+        }
         assertArrayEquals(data, result);
         assertFalse(result == data);
         data[0][0] = 0;
@@ -250,6 +254,42 @@ public class DataUtilitiesUnitTest {
     @Test(expected = IllegalArgumentException.class)
     public void testDataIsNullClone() {
         DataUtilities.clone(null);
+    }
+    //endregion
+
+    //region test public static boolean equal(double[][] a, double[][] b)
+    @Test
+    public void testEqual() {
+        double[][] data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        double[][] data2 = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        assertFalse(data == data2);
+        assertArrayEquals(data, data2);
+        assertTrue(DataUtilities.equal(data, data2));
+    }
+
+    @Test
+    public void testDimensionNotSameEqual() {
+        double[][] data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        double[][] data2 = {{1, 2, 3}, {4, 5, 6}, {7, 8}};
+        assertFalse(data == data2);
+        assertFalse(DataUtilities.equal(data, data2));
+    }
+
+    @Test
+    public void testTwoDataIsNullEqual() {
+        assertTrue(DataUtilities.equal(null, null));
+    }
+
+    @Test
+    public void testdata2IsNullEqual() {
+        double[][] data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        assertFalse(DataUtilities.equal(data, null));
+    }
+
+    @Test
+    public void testTwoData1IsNullEqual() {
+        double[][] data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        assertFalse(DataUtilities.equal(null, data));
     }
     //endregion
 
