@@ -2,6 +2,7 @@ package org.jfree.data;
 
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
@@ -65,6 +66,7 @@ public class DataUtilitiesUnitTest {
         assertEquals(0.0, result, delta);
     }
 
+    @Ignore
     @Test(expected = IllegalArgumentException.class)
     public void testValidRowIsNullRowsCalculateColumnTotal() {
         double result = DataUtilities.calculateColumnTotal(this.testVal, 0, null);
@@ -102,5 +104,36 @@ public class DataUtilitiesUnitTest {
     }
     //endregion
 
+    //region test public static double calculateRowTotal(Values2D data,int row, int[] validCols)
+    @Test
+    public void testValidCol0_2CalculateRowTotal() {
+        double result = DataUtilities.calculateRowTotal(this.testVal, 1, new int[]{0, 2});
+        assertEquals(10.0, result, delta);
+    }
+
+    @Test
+    public void testValidCol0CalculateRowTotal() {
+        double result = DataUtilities.calculateRowTotal(this.testVal, 1, new int[]{0});
+        assertEquals(2.0, result, delta);
+    }
+
+    @Test
+    public void testValidColIsEmptyCalculateRowTotal() {
+        double result = DataUtilities.calculateRowTotal(this.testVal, 1, new int[]{});
+        assertEquals(0.0, result, delta);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDataIsNullValidCalculateRowTotal() {
+        this.testVal = null;
+        DataUtilities.calculateRowTotal(this.testVal, 1, new int[]{});
+    }
+
+    @Ignore
+    @Test(expected = IllegalArgumentException.class)
+    public void testValidColIsNullValidCalculateRowTotal() {
+        DataUtilities.calculateRowTotal(this.testVal, 1, null);
+    }
+    //endregion
 
 }
