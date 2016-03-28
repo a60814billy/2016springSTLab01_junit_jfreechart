@@ -136,4 +136,49 @@ public class DataUtilitiesUnitTest {
     }
     //endregion
 
+    //region test public static KeyedValues getCumulativePercentages(KeyedValues data)
+    @Test
+    public void testBasicGetCumulativePercentages() {
+        DefaultKeyedValues testData = new DefaultKeyedValues();
+        String[] keys = {"1", "2", "3", "4", "5"};
+        Double[] expected = {0.2, 0.4, 0.6, 0.8, 1.0};
+
+        for (String key : keys) {
+            testData.addValue(key, 1);
+        }
+        KeyedValues result = DataUtilities.getCumulativePercentages(testData);
+        for (int i = 0; i < keys.length; i++) {
+            assertEquals(expected[i], (Double) result.getValue(keys[i]), delta);
+        }
+    }
+
+    @Test
+    public void testComplexGetCumulativePercentages() {
+        DefaultKeyedValues testData = new DefaultKeyedValues();
+        String[] keys = {"a", "b", "c", "d", "e"};
+        Integer[] values = {1, 1, 3, 1, 4};
+        Double[] expected = {.1, .2, .5, .6, 1.0};
+
+        for (int i = 0; i < keys.length; i++) {
+            testData.addValue(keys[i], values[i]);
+        }
+        KeyedValues result = DataUtilities.getCumulativePercentages(testData);
+        for (int i = 0; i < keys.length; i++) {
+            assertEquals(expected[i], (Double) result.getValue(keys[i]), delta);
+        }
+    }
+
+    @Test
+    public void testDataIsEmptyGetCumulativePercentages() {
+        DefaultKeyedValues testData = new DefaultKeyedValues();
+        KeyedValues result = DataUtilities.getCumulativePercentages(testData);
+        assertEquals(0, result.getItemCount());
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDataIsNullGetCumulativePercentages() {
+        KeyedValues result = DataUtilities.getCumulativePercentages(null);
+    }
+    //endregion
+
 }
