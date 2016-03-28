@@ -7,7 +7,8 @@ import org.junit.runners.Suite;
 @RunWith(Suite.class)
 @Suite.SuiteClasses({
         DataUtilitiesUnitTest.class,
-        CSVTest.class
+        CSVTest.class,
+        RangeTest.class
 })
 public class JFreeChartDataTestSuite {
 }
