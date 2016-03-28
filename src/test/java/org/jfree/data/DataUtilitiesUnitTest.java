@@ -1,4 +1,5 @@
-import org.jfree.data.DataUtilities;
+package org.jfree.data;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

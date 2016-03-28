@@ -7,8 +7,16 @@ sourceCompatibility = 1.5
 
 repositories {
     mavenCentral()
+    flatDir {
+        dirs 'lib'
+    }
 }
 
 dependencies {
     testCompile group: 'junit', name: 'junit', version: '4.12'
+    compile name: 'jfreechart-1.0.19'
+}
+
+test{
+    include 'org/jfree/data/JFreeChartDataTestSuite.class'
 }
