@@ -5,8 +5,7 @@ import org.junit.Before;
 import org.junit.Ignore;
 import org.junit.Test;
 
-import static org.junit.Assert.assertArrayEquals;
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
 
 public class DataUtilitiesUnitTest {
 
@@ -224,6 +223,33 @@ public class DataUtilitiesUnitTest {
     @Test(expected = IllegalArgumentException.class)
     public void testDataIsNullCreateNumberArray2D() {
         DataUtilities.createNumberArray2D(null);
+    }
+    //endregion
+
+    //region test public static double[][] clone(double[][] source)
+    @Test
+    public void testClone() {
+        double[][] data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        assertArrayEquals(data, data);
+        double[][] result = DataUtilities.clone(data);
+        assertArrayEquals(data, result);
+        assertFalse(result == data);
+        data[0][0] = 0;
+        assertNotEquals(data[0][0], result[0][0]);
+    }
+
+    @Test
+    public void testDataIsEmptyClone() {
+        double[][] data = {};
+        assertArrayEquals(data, data);
+        double[][] result = DataUtilities.clone(data);
+        assertArrayEquals(data, result);
+        assertFalse(result == data);
+    }
+
+    @Test(expected = IllegalArgumentException.class)
+    public void testDataIsNullClone() {
+        DataUtilities.clone(null);
     }
     //endregion
 
