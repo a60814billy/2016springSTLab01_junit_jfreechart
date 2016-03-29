@@ -1,5 +1,6 @@
 package tw.edu.ntut.jfree.test;
 
+import org.jfree.data.Range;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -39,7 +40,7 @@ public class RangeTest {
     public void testGetLength() {
         assertEquals(20.0, testRange1.getLength(), delta);
         assertEquals(0.0, testRange2.getLength(), delta);
-        assertEquals(2*Double.MAX_VALUE, testRange3.getLength(), delta);
+        assertEquals(2 * Double.MAX_VALUE, testRange3.getLength(), delta);
     }
 
     @Test
@@ -92,5 +93,53 @@ public class RangeTest {
         assertTrue(testRange3.contains(-Double.MAX_VALUE));
     }
     //endregion
+
+    @Test
+    public void testIntersectsWithTwoDouble() {
+        assertTrue(testRange1.intersects(-9.0, 9.0));
+        assertTrue(testRange1.intersects(-10.0, 10.0));
+
+        assertTrue(testRange1.intersects(-10.0, 10.1));
+        assertTrue(testRange1.intersects(-10.0, 10.1));
+        assertTrue(testRange1.intersects(-10.1, 10.0));
+
+        assertFalse(testRange1.intersects(10.1, 11.0));
+        assertFalse(testRange1.intersects(-11.0, -10.9));
+        assertFalse(testRange1.intersects(10.0, -10.0));
+    }
+
+    @Test
+    public void testIntersectsWithRange() {
+        assertTrue(testRange1.intersects(new Range(-9.0, 9.0)));
+        assertTrue(testRange1.intersects(new Range(-10.0, 10.0)));
+
+        assertTrue(testRange1.intersects(new Range(-10.0, 10.1)));
+        assertTrue(testRange1.intersects(new Range(-10.1, 10.0)));
+        assertTrue(testRange1.intersects(new Range(-10.1, 10.1)));
+
+        assertFalse(testRange1.intersects(new Range(10.1, 11.0)));
+        assertFalse(testRange1.intersects(new Range(-11.0, -10.1)));
+    }
+
+    @Test
+    public void testConstrain() {
+        assertEquals(-1.0, testRange1.constrain(-1.0), delta);
+        assertEquals(-10.0, testRange1.constrain(-10.0), delta);
+        assertEquals(-0.0000001, testRange1.constrain(-0.0000001), delta);
+        assertEquals(0.000001, testRange1.constrain(0.000001), delta);
+        assertEquals(1.0, testRange1.constrain(1.0), delta);
+        assertEquals(10.0, testRange1.constrain(10.0), delta);
+        assertEquals(10.0, testRange1.constrain(100.0), delta);
+        assertEquals(-10.0, testRange1.constrain(-100.0), delta);
+        assertEquals(10.0, testRange1.constrain(Double.MAX_VALUE), delta);
+        assertEquals(-10.0, testRange1.constrain(-Double.MAX_VALUE), delta);
+    }
+
+    @Test
+    public void testGetCentralValue(){
+        assertEquals(0.0, testRange1.getCentralValue(), delta);
+        assertEquals(0.0, testRange2.getCentralValue(), delta);
+        assertEquals(0.0, testRange3.getCentralValue(), delta);
+    }
 
 }
