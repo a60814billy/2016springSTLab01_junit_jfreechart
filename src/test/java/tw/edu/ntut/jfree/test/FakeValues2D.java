@@ -1,5 +1,7 @@
 package tw.edu.ntut.jfree.test;
 
+import org.jfree.data.Values2D;
+
 class FakeValues2D implements Values2D {
 
     private int data[][] = {

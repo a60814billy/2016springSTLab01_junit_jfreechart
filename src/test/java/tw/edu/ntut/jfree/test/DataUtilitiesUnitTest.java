@@ -1,5 +1,9 @@
 package tw.edu.ntut.jfree.test;
 
+import org.jfree.data.DataUtilities;
+import org.jfree.data.DefaultKeyedValues;
+import org.jfree.data.KeyedValues;
+import org.jfree.date.DateUtilities;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -283,6 +287,14 @@ public class DataUtilitiesUnitTest {
     public void testDimensionNotSameEqual() {
         double[][] data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
         double[][] data2 = {{1, 2, 3}, {4, 5, 6}, {7, 8}};
+        assertFalse(data == data2);
+        assertFalse(DataUtilities.equal(data, data2));
+    }
+
+    @Test
+    public void testLengthNotSameEqual() {
+        double[][] data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+        double[][] data2 = {{1, 2, 3}, {4, 5, 6}};
         assertFalse(data == data2);
         assertFalse(DataUtilities.equal(data, data2));
     }

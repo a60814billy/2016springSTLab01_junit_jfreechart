@@ -1,6 +1,7 @@
 package tw.edu.ntut.jfree.test.io;
 
-import tw.edu.ntut.jfree.test.category.CategoryDataset;
+import org.jfree.data.category.CategoryDataset;
+import org.jfree.data.io.CSV;
 import org.junit.Test;
 
 import java.io.IOException;
