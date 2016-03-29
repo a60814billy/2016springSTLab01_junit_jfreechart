@@ -1,6 +1,4 @@
-package org.jfree.data;
-
-import org.jfree.data.Values2D;
+package tw.edu.ntut.jfree.test;
 
 class FakeValues2D implements Values2D {
 

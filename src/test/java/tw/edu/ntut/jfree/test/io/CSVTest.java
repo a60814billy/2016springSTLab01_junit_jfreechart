@@ -1,10 +1,9 @@
-package org.jfree.data.io;
+package tw.edu.ntut.jfree.test.io;
 
-import org.jfree.data.category.CategoryDataset;
+import tw.edu.ntut.jfree.test.category.CategoryDataset;
 import org.junit.Test;
 
 import java.io.IOException;
-import java.io.Reader;
 import java.io.StringReader;
 
 import static org.junit.Assert.*;

@@ -1,8 +1,7 @@
-package org.jfree.data;
+package tw.edu.ntut.jfree.test;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import static org.junit.Assert.*;

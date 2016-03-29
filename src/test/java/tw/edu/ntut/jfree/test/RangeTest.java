@@ -1,8 +1,7 @@
-package org.jfree.data;
+package tw.edu.ntut.jfree.test;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.omg.CORBA.DoubleHolder;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;

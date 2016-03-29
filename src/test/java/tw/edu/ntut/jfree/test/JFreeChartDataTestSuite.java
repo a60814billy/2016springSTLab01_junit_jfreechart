@@ -1,6 +1,6 @@
-package org.jfree.data;
+package tw.edu.ntut.jfree.test;
 
-import org.jfree.data.io.CSVTest;
+import tw.edu.ntut.jfree.test.io.CSVTest;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
