@@ -46,7 +46,7 @@ public class DataUtilitiesUnitTest {
     @Test(expected = IllegalArgumentException.class)
     public void testDataIsNullColumnIndexCalculateColumnTotal() {
         this.testVal = null;
-        DataUtilities.calculateColumnTotal(this.testVal, 3);
+        DataUtilities.calculateColumnTotal(this.testVal, 0);
     }
     //endregion
 
@@ -218,7 +218,7 @@ public class DataUtilitiesUnitTest {
     }
     //endregion
 
-    //region test public static java.lang.Number[] createNumberArray2D(double[] data)
+    //region test public static java.lang.Number[] createNumberArray2D(double[][] data)
     @Test
     public void testCreateNumberArray2D() {
         double[][] data = {{1.1, 2.2, 3.3}, {1.1, 2.2, 3.3}, {1.1, 2.2, 3.3}, {1.1, 2.2, 3.3}};

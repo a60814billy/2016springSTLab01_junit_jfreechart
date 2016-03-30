@@ -23,7 +23,7 @@ dependencies {
 }
 
 test {
-    include 'org/jfree/data/JFreeChartDataTestSuite.class'
+    include 'tw/edu/ntut/jfree/test/JFreeChartDataTestSuite.class'
     afterTest { desc, result ->
         println "Executing test ${desc.name} [${desc.className}] with result: ${result.resultType}"
     }
