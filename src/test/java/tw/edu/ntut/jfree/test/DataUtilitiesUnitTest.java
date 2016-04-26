@@ -1,8 +1,6 @@
 package tw.edu.ntut.jfree.test;
 
-import org.jfree.data.DataUtilities;
-import org.jfree.data.DefaultKeyedValues;
-import org.jfree.data.KeyedValues;
+import org.jfree.data.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,6 +27,20 @@ public class DataUtilitiesUnitTest {
     public void testColumn0CalculateColumnTotal() {
         double result = DataUtilities.calculateColumnTotal(this.testVal, 0);
         assertEquals(6.0, result, delta);
+    }
+
+    @Test
+    public void testCalculateColumnTotalWithNull(){
+        FakeValues2DNull val = new FakeValues2DNull();
+        double result = DataUtilities.calculateColumnTotal(val, 0);
+        assertEquals(0.0 , result, delta);
+    }
+
+    @Test
+    public void testCalculateColumnTotalWithNull2(){
+        FakeValues2DNull val = new FakeValues2DNull();
+        double result = DataUtilities.calculateColumnTotal(val, 0, new int[]{1,2,10});
+        assertEquals(0.0 , result, delta);
     }
 
     @Test
@@ -96,6 +108,19 @@ public class DataUtilitiesUnitTest {
     }
 
     @Test
+    public void testCalculateRowTotalWithNull() {
+        Values2D val = new FakeValues2DNull();
+        double result = DataUtilities.calculateRowTotal(val, 0);
+        assertEquals(0.0, result, delta);
+    }
+    @Test
+    public void testCalculateRowTotalWithNull2() {
+        Values2D val = new FakeValues2DNull();
+        double result = DataUtilities.calculateRowTotal(val, 0, new int[]{1,2,12});
+        assertEquals(0.0, result, delta);
+    }
+
+    @Test
     public void testRow2CalculateRowTotal() {
         double result = DataUtilities.calculateRowTotal(this.testVal, 2);
         assertEquals(18.0, result, delta);
@@ -160,6 +185,21 @@ public class DataUtilitiesUnitTest {
 
         for (String key : keys) {
             testData.addValue(key, 1);
+        }
+        KeyedValues result = DataUtilities.getCumulativePercentages(testData);
+        for (int i = 0; i < keys.length; i++) {
+            assertEquals(expected[i], (Double) result.getValue(keys[i]), delta);
+        }
+    }
+
+    @Test
+    public void testBasicGetCumulativePercentagesWithNull() {
+        DefaultKeyedValues testData = new DefaultKeyedValues();
+        String[] keys = {"1", "2", "3", "4", "5"};
+        Double[] expected = {Double.NaN, Double.NaN, Double.NaN, Double.NaN, Double.NaN};
+
+        for (String key : keys) {
+            testData.addValue(key, null);
         }
         KeyedValues result = DataUtilities.getCumulativePercentages(testData);
         for (int i = 0; i < keys.length; i++) {
