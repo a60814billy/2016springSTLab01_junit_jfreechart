@@ -206,6 +206,26 @@ public class RangeTest {
     }
 
     @Test
+    public void testIntersectsWithTwoDouble8() {
+        assertTrue(testRange1.intersects(0.0, 1.0));
+    }
+
+    @Test
+    public void testIntersectsWithTwoDouble9() {
+        assertFalse(testRange1.intersects(0.0, -1.0));
+    }
+
+    @Test
+    public void testIntersectsWithTwoDouble10() {
+        assertFalse(testRange1.intersects(10.1, 10.2));
+    }
+
+    @Test
+    public void testIntersectsWithTwoDouble11() {
+        assertFalse(testRange1.intersects(10.1, 10.0));
+    }
+
+    @Test
     public void testIntersectsWithRange1() {
         assertTrue(testRange1.intersects(new Range(-9.0, 9.0)));
     }

@@ -45,12 +45,6 @@ public class CSVTest {
         }
     }
 
-    /**
-     * Test CVS show as below
-     * \      , JFreeSVG, Batik
-     * Warm-up,     7445, 24448
-     * Test   ,     4297, 21022
-     */
     @Test
     public void testBasicReadCategoryDatasetWithtextDelimiterError() {
         String csvData = String.format("%s\n%s\n%s", ",\"JFreeSVG\",\"Batik\"", "\"Warm-up\",\"7445\",\"24448\"", "\"Test\",\"4297\",\"21022\"");
@@ -62,8 +56,10 @@ public class CSVTest {
         try {
             result = csv.readCategoryDataset(sr);
             fail();
-        } catch (Exception e) {
+        } catch (NumberFormatException e) {
             assertTrue(true);
+        }catch (Exception e){
+            fail();
         }
     }
 
