@@ -36,29 +36,23 @@ public class DataUtilitiesUnitTest {
         assertEquals(0.0 , result, delta);
     }
 
-    @Test
-    public void testCalculateColumnTotalWithNull2(){
-        FakeValues2DNull val = new FakeValues2DNull();
-        double result = DataUtilities.calculateColumnTotal(val, 0, new int[]{1,2,10});
-        assertEquals(0.0 , result, delta);
-    }
+//
+//    @Test
+//    public void testColumn2CalculateColumnTotal() {
+//        double result = DataUtilities.calculateColumnTotal(this.testVal, 2);
+//        assertEquals(24.0, result, delta);
+//    }
+//
+//    @Test(expected = ArrayIndexOutOfBoundsException.class)
+//    public void testOverColumnIndexCalculateColumnTotal() {
+//        DataUtilities.calculateColumnTotal(this.testVal, 3);
+//    }
 
-    @Test
-    public void testColumn2CalculateColumnTotal() {
-        double result = DataUtilities.calculateColumnTotal(this.testVal, 2);
-        assertEquals(24.0, result, delta);
-    }
-
-    @Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void testOverColumnIndexCalculateColumnTotal() {
-        DataUtilities.calculateColumnTotal(this.testVal, 3);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testDataIsNullColumnIndexCalculateColumnTotal() {
-        this.testVal = null;
-        DataUtilities.calculateColumnTotal(this.testVal, 0);
-    }
+//    @Test(expected = IllegalArgumentException.class)
+//    public void testDataIsNullColumnIndexCalculateColumnTotal() {
+//        this.testVal = null;
+//        DataUtilities.calculateColumnTotal(this.testVal, 0);
+//    }
     //endregion
 
     //region test public static double calculateColumnTotal(Values2D data,int column, int[] validRows)
@@ -74,29 +68,37 @@ public class DataUtilitiesUnitTest {
         assertEquals(1.0, result, delta);
     }
 
-    @Test
-    public void testValidRowIsEmptyRowsCalculateColumnTotal() {
-        double result = DataUtilities.calculateColumnTotal(this.testVal, 0, new int[]{});
-        assertEquals(0.0, result, delta);
-    }
+//    @Test
+//    public void testValidRowIsEmptyRowsCalculateColumnTotal() {
+//        double result = DataUtilities.calculateColumnTotal(this.testVal, 0, new int[]{});
+//        assertEquals(0.0, result, delta);
+//    }
+//
+//    @Test
+//    public void testValidRowIsNullRowsCalculateColumnTotal() {
+//        boolean pass = false;
+//        try {
+//            DataUtilities.calculateColumnTotal(this.testVal, 0, null);
+//            fail();
+//        } catch (NullPointerException e) {
+//            pass = true;
+//        }
+//        assertTrue(pass);
+//
+//    }
+
+//    @Test(expected = IllegalArgumentException.class)
+//    public void testDataIsNullValidRowsCalculateColumnTotal() {
+//        double result = DataUtilities.calculateColumnTotal(null, 0, new int[]{});
+//        assertEquals(0.0, result, delta);
+//    }
+
 
     @Test
-    public void testValidRowIsNullRowsCalculateColumnTotal() {
-        boolean pass = false;
-        try {
-            DataUtilities.calculateColumnTotal(this.testVal, 0, null);
-            fail();
-        } catch (NullPointerException e) {
-            pass = true;
-        }
-        assertTrue(pass);
-
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testDataIsNullValidRowsCalculateColumnTotal() {
-        double result = DataUtilities.calculateColumnTotal(null, 0, new int[]{});
-        assertEquals(0.0, result, delta);
+    public void testCalculateColumnTotalWithNull2(){
+        FakeValues2DNull val = new FakeValues2DNull();
+        double result = DataUtilities.calculateColumnTotal(val, 0, new int[]{1,2,10});
+        assertEquals(0.0 , result, delta);
     }
     //endregion
 
@@ -113,29 +115,23 @@ public class DataUtilitiesUnitTest {
         double result = DataUtilities.calculateRowTotal(val, 0);
         assertEquals(0.0, result, delta);
     }
-    @Test
-    public void testCalculateRowTotalWithNull2() {
-        Values2D val = new FakeValues2DNull();
-        double result = DataUtilities.calculateRowTotal(val, 0, new int[]{1,2,12});
-        assertEquals(0.0, result, delta);
-    }
 
-    @Test
-    public void testRow2CalculateRowTotal() {
-        double result = DataUtilities.calculateRowTotal(this.testVal, 2);
-        assertEquals(18.0, result, delta);
-    }
+//    @Test
+//    public void testRow2CalculateRowTotal() {
+//        double result = DataUtilities.calculateRowTotal(this.testVal, 2);
+//        assertEquals(18.0, result, delta);
+//    }
 
     @Test(expected = ArrayIndexOutOfBoundsException.class)
     public void testRowOverIndexCalculateRowTotal() {
         double result = DataUtilities.calculateRowTotal(this.testVal, 3);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testDataNullOnCalculateRowTotal() {
-        this.testVal = null;
-        double result = DataUtilities.calculateRowTotal(this.testVal, 0);
-    }
+//    @Test(expected = IllegalArgumentException.class)
+//    public void testDataNullOnCalculateRowTotal() {
+//        this.testVal = null;
+//        double result = DataUtilities.calculateRowTotal(this.testVal, 0);
+//    }
     //endregion
 
     //region test public static double calculateRowTotal(Values2D data,int row, int[] validCols)
@@ -151,29 +147,36 @@ public class DataUtilitiesUnitTest {
         assertEquals(2.0, result, delta);
     }
 
+//    @Test
+//    public void testValidColIsEmptyCalculateRowTotal() {
+//        double result = DataUtilities.calculateRowTotal(this.testVal, 1, new int[]{});
+//        assertEquals(0.0, result, delta);
+//    }
+
+//    @Test(expected = IllegalArgumentException.class)
+//    public void testDataIsNullValidCalculateRowTotal() {
+//        this.testVal = null;
+//        DataUtilities.calculateRowTotal(this.testVal, 1, new int[]{});
+//    }
+
     @Test
-    public void testValidColIsEmptyCalculateRowTotal() {
-        double result = DataUtilities.calculateRowTotal(this.testVal, 1, new int[]{});
+    public void testCalculateRowTotalWithNull2() {
+        Values2D val = new FakeValues2DNull();
+        double result = DataUtilities.calculateRowTotal(val, 0, new int[]{1,2,12});
         assertEquals(0.0, result, delta);
     }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testDataIsNullValidCalculateRowTotal() {
-        this.testVal = null;
-        DataUtilities.calculateRowTotal(this.testVal, 1, new int[]{});
-    }
-
-    @Test
-    public void testValidColIsNullValidCalculateRowTotal() {
-        boolean pass = false;
-        try {
-            DataUtilities.calculateRowTotal(this.testVal, 1, null);
-            fail();
-        } catch (NullPointerException e) {
-            pass = true;
-        }
-        assertTrue(pass);
-    }
+//    @Test
+//    public void testValidColIsNullValidCalculateRowTotal() {
+//        boolean pass = false;
+//        try {
+//            DataUtilities.calculateRowTotal(this.testVal, 1, null);
+//            fail();
+//        } catch (NullPointerException e) {
+//            pass = true;
+//        }
+//        assertTrue(pass);
+//    }
     //endregion
 
     //region test public static KeyedValues getCumulativePercentages(KeyedValues data)
@@ -207,54 +210,54 @@ public class DataUtilitiesUnitTest {
         }
     }
 
-    @Test
-    public void testComplexGetCumulativePercentages() {
-        DefaultKeyedValues testData = new DefaultKeyedValues();
-        String[] keys = {"a", "b", "c", "d", "e"};
-        Integer[] values = {1, 1, 3, 1, 4};
-        Double[] expected = {.1, .2, .5, .6, 1.0};
+//    @Test
+//    public void testComplexGetCumulativePercentages() {
+//        DefaultKeyedValues testData = new DefaultKeyedValues();
+//        String[] keys = {"a", "b", "c", "d", "e"};
+//        Integer[] values = {1, 1, 3, 1, 4};
+//        Double[] expected = {.1, .2, .5, .6, 1.0};
+//
+//        for (int i = 0; i < keys.length; i++) {
+//            testData.addValue(keys[i], values[i]);
+//        }
+//        KeyedValues result = DataUtilities.getCumulativePercentages(testData);
+//        for (int i = 0; i < keys.length; i++) {
+//            assertEquals(expected[i], (Double) result.getValue(keys[i]), delta);
+//        }
+//    }
 
-        for (int i = 0; i < keys.length; i++) {
-            testData.addValue(keys[i], values[i]);
-        }
-        KeyedValues result = DataUtilities.getCumulativePercentages(testData);
-        for (int i = 0; i < keys.length; i++) {
-            assertEquals(expected[i], (Double) result.getValue(keys[i]), delta);
-        }
-    }
+//    @Test
+//    public void testDataIsEmptyGetCumulativePercentages() {
+//        DefaultKeyedValues testData = new DefaultKeyedValues();
+//        KeyedValues result = DataUtilities.getCumulativePercentages(testData);
+//        assertEquals(0, result.getItemCount());
+//    }
 
-    @Test
-    public void testDataIsEmptyGetCumulativePercentages() {
-        DefaultKeyedValues testData = new DefaultKeyedValues();
-        KeyedValues result = DataUtilities.getCumulativePercentages(testData);
-        assertEquals(0, result.getItemCount());
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testDataIsNullGetCumulativePercentages() {
-        KeyedValues result = DataUtilities.getCumulativePercentages(null);
-    }
+//    @Test(expected = IllegalArgumentException.class)
+//    public void testDataIsNullGetCumulativePercentages() {
+//        KeyedValues result = DataUtilities.getCumulativePercentages(null);
+//    }
     //endregion
 
     //region test public static java.lang.Number[] createNumberArray(double[] data)
-    @Test
-    public void testCreateNumberArray() {
-        Number[] result = DataUtilities.createNumberArray(new double[]{1.1, 2.2, 3.3});
-        Number[] expected = {1.1, 2.2, 3.3};
-        assertArrayEquals(expected, result);
-    }
+//    @Test
+//    public void testCreateNumberArray() {
+//        Number[] result = DataUtilities.createNumberArray(new double[]{1.1, 2.2, 3.3});
+//        Number[] expected = {1.1, 2.2, 3.3};
+//        assertArrayEquals(expected, result);
+//    }
 
-    @Test
-    public void testDataIsEmptyCreateNumberArray() {
-        Number[] result = DataUtilities.createNumberArray(new double[]{});
-        Number[] expected = {};
-        assertArrayEquals(expected, result);
-    }
-
-    @Test(expected = IllegalArgumentException.class)
-    public void testDataIsNullCreateNumberArray() {
-        DataUtilities.createNumberArray(null);
-    }
+//    @Test
+//    public void testDataIsEmptyCreateNumberArray() {
+//        Number[] result = DataUtilities.createNumberArray(new double[]{});
+//        Number[] expected = {};
+//        assertArrayEquals(expected, result);
+//    }
+//
+//    @Test(expected = IllegalArgumentException.class)
+//    public void testDataIsNullCreateNumberArray() {
+//        DataUtilities.createNumberArray(null);
+//    }
     //endregion
 
     //region test public static java.lang.Number[] createNumberArray2D(double[][] data)
@@ -268,17 +271,17 @@ public class DataUtilitiesUnitTest {
         assertArrayEquals(expected, result);
     }
 
-    @Test
-    public void testDataIsEmptyCreateNumberArray2D() {
-        Number[][] result = DataUtilities.createNumberArray2D(new double[][]{});
-        Number[] expected = {};
-        assertArrayEquals(expected, result);
-    }
+//    @Test
+//    public void testDataIsEmptyCreateNumberArray2D() {
+//        Number[][] result = DataUtilities.createNumberArray2D(new double[][]{});
+//        Number[] expected = {};
+//        assertArrayEquals(expected, result);
+//    }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testDataIsNullCreateNumberArray2D() {
-        DataUtilities.createNumberArray2D(null);
-    }
+//    @Test(expected = IllegalArgumentException.class)
+//    public void testDataIsNullCreateNumberArray2D() {
+//        DataUtilities.createNumberArray2D(null);
+//    }
     //endregion
 
     //region test public static double[][] clone(double[][] source)
@@ -297,19 +300,19 @@ public class DataUtilitiesUnitTest {
         assertNotEquals(data[0][0], result[0][0]);
     }
 
-    @Test
-    public void testDataIsEmptyClone() {
-        double[][] data = {};
-        assertArrayEquals(data, data);
-        double[][] result = DataUtilities.clone(data);
-        assertArrayEquals(data, result);
-        assertFalse(result == data);
-    }
+//    @Test
+//    public void testDataIsEmptyClone() {
+//        double[][] data = {};
+//        assertArrayEquals(data, data);
+//        double[][] result = DataUtilities.clone(data);
+//        assertArrayEquals(data, result);
+//        assertFalse(result == data);
+//    }
 
-    @Test(expected = IllegalArgumentException.class)
-    public void testDataIsNullClone() {
-        DataUtilities.clone(null);
-    }
+//    @Test(expected = IllegalArgumentException.class)
+//    public void testDataIsNullClone() {
+//        DataUtilities.clone(null);
+//    }
     //endregion
 
     //region test public static boolean equal(double[][] a, double[][] b)
@@ -349,11 +352,11 @@ public class DataUtilitiesUnitTest {
         assertFalse(DataUtilities.equal(data, null));
     }
 
-    @Test
-    public void testTwoData1IsNullEqual() {
-        double[][] data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
-        assertFalse(DataUtilities.equal(null, data));
-    }
+//    @Test
+//    public void testTwoData1IsNullEqual() {
+//        double[][] data = {{1, 2, 3}, {4, 5, 6}, {7, 8, 9}};
+//        assertFalse(DataUtilities.equal(null, data));
+//    }
     //endregion
 
 }
