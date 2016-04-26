@@ -3,7 +3,6 @@ package tw.edu.ntut.jfree.test;
 import org.jfree.data.DataUtilities;
 import org.jfree.data.DefaultKeyedValues;
 import org.jfree.data.KeyedValues;
-import org.jfree.date.DateUtilities;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
